@@ -1,3 +1,23 @@
+const welcomeDialog = document.querySelector(".welcome-dialog");
+const welcomeDialogClose = welcomeDialog.querySelector(".welcome-dialog-close");
+const welcomeDialogAction = welcomeDialog.querySelector(".welcome-dialog-action");
+
+welcomeDialog.showModal();
+
+welcomeDialogClose.addEventListener("click", () => {
+    welcomeDialog.close();
+});
+
+welcomeDialogAction.addEventListener("click", () => {
+    welcomeDialog.close();
+});
+
+welcomeDialog.addEventListener("click", (event) => {
+    if (event.target === welcomeDialog) {
+        welcomeDialog.close();
+    }
+});
+
 // Initialize AOS Animation
 AOS.init({
     duration: 1500,
