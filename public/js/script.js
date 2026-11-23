@@ -82,3 +82,55 @@ new Chart(ctx, {
         }
     }
 });
+
+const galleryGrid = document.querySelector(".gallery-grid");
+const galleryLightbox = document.querySelector(".gallery-lightbox");
+const galleryLightboxImage = galleryLightbox.querySelector(".gallery-lightbox-image");
+const galleryLightboxClose = galleryLightbox.querySelector(".gallery-lightbox-close");
+
+function openGalleryImage(item) {
+    const image = item.querySelector("img");
+
+    galleryLightboxImage.src = image.currentSrc || image.src;
+    galleryLightboxImage.alt = image.alt;
+    galleryLightbox.showModal();
+}
+
+galleryGrid.querySelectorAll(".gallery-item").forEach((item) => {
+    const image = item.querySelector("img");
+
+    item.setAttribute("role", "button");
+    item.setAttribute("tabindex", "0");
+    item.setAttribute("aria-label", `View image: ${image.alt}`);
+});
+
+galleryGrid.addEventListener("click", (event) => {
+    const item = event.target.closest(".gallery-item");
+
+    if (item) {
+        openGalleryImage(item);
+    }
+});
+
+galleryGrid.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+        return;
+    }
+
+    const item = event.target.closest(".gallery-item");
+
+    if (item) {
+        event.preventDefault();
+        openGalleryImage(item);
+    }
+});
+
+galleryLightboxClose.addEventListener("click", () => {
+    galleryLightbox.close();
+});
+
+galleryLightbox.addEventListener("click", (event) => {
+    if (event.target === galleryLightbox) {
+        galleryLightbox.close();
+    }
+});
