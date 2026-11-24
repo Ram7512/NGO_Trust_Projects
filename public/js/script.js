@@ -53,55 +53,66 @@ stats.forEach((card, index) => {
 
 const ctx = document.getElementById("impactChart");
 
-new Chart(ctx, {
+const chartWrapper = ctx.closest(".chart-wrapper");
+const chartObserver = new IntersectionObserver((entries, observer) => {
+    if (!entries.some((entry) => entry.isIntersecting)) {
+        return;
+    }
 
-    type: "pie",
+    observer.disconnect();
 
-    data: {
+    new Chart(ctx, {
 
-        labels: [
-            "Women Empowerment",
-            "Education",
-            "Agriculture",
-            "Health",
-            "SHGs"
-        ],
+        type: "pie",
 
-        datasets: [{
+        data: {
 
-            data: [35, 20, 18, 12, 15],
-
-            backgroundColor: [
-                "#c64e44",
-                "#f4a261",
-                "#2a9d8f",
-                "#457b9d",
-                "#8d99ae"
+            labels: [
+                "Women Empowerment",
+                "Education",
+                "Agriculture",
+                "Health",
+                "SHGs"
             ],
-            borderColor: "#fff",
-            borderWidth: 2
+
+            datasets: [{
+
+                data: [35, 20, 18, 12, 15],
+
+                backgroundColor: [
+                    "#c64e44",
+                    "#f4a261",
+                    "#2a9d8f",
+                    "#457b9d",
+                    "#8d99ae"
+                ],
+                borderColor: "#fff",
+                borderWidth: 2
 
 
-        }]
-    },
-
-    options: {
-
-        // cutout: '70%',
-
-        responsive: true,
-        animation: {
-            animateRotate: true,
-            duration: 2000
+            }]
         },
-        plugins: {
 
-            legend: {
-                display: false
+        options: {
+
+            // cutout: '70%',
+
+            responsive: true,
+            animation: {
+                animateRotate: true,
+                duration: 2000
+            },
+            plugins: {
+
+                legend: {
+                    display: false
+                }
             }
         }
-    }
 });
+}, { threshold: 0.25 });
+
+chartObserver.observe(chartWrapper);
 
 const galleryGrid = document.querySelector(".gallery-grid");
 const galleryLightbox = document.querySelector(".gallery-lightbox");
