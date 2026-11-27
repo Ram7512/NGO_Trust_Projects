@@ -1,22 +1,25 @@
 const welcomeDialog = document.querySelector(".welcome-dialog");
-const welcomeDialogClose = welcomeDialog.querySelector(".welcome-dialog-close");
-const welcomeDialogAction = welcomeDialog.querySelector(".welcome-dialog-action");
 
-welcomeDialog.showModal();
+if (welcomeDialog) {
+    const welcomeDialogClose = welcomeDialog.querySelector(".welcome-dialog-close");
+    const welcomeDialogAction = welcomeDialog.querySelector(".welcome-dialog-action");
 
-welcomeDialogClose.addEventListener("click", () => {
-    welcomeDialog.close();
-});
+    welcomeDialog.showModal();
 
-welcomeDialogAction.addEventListener("click", () => {
-    welcomeDialog.close();
-});
-
-welcomeDialog.addEventListener("click", (event) => {
-    if (event.target === welcomeDialog) {
+    welcomeDialogClose.addEventListener("click", () => {
         welcomeDialog.close();
-    }
-});
+    });
+
+    welcomeDialogAction.addEventListener("click", () => {
+        welcomeDialog.close();
+    });
+
+    welcomeDialog.addEventListener("click", (event) => {
+        if (event.target === welcomeDialog) {
+            welcomeDialog.close();
+        }
+    });
+}
 
 // Initialize AOS Animation
 AOS.init({
@@ -53,115 +56,156 @@ stats.forEach((card, index) => {
 
 const ctx = document.getElementById("impactChart");
 
-const chartWrapper = ctx.closest(".chart-wrapper");
-const chartObserver = new IntersectionObserver((entries, observer) => {
-    if (!entries.some((entry) => entry.isIntersecting)) {
-        return;
-    }
+if (ctx) {
+    const chartWrapper = ctx.closest(".chart-wrapper");
 
-    observer.disconnect();
-
-    new Chart(ctx, {
-
-        type: "pie",
-
-        data: {
-
-            labels: [
-                "Women Empowerment",
-                "Education",
-                "Agriculture",
-                "Health",
-                "SHGs"
-            ],
-
-            datasets: [{
-
-                data: [35, 20, 18, 12, 15],
-
-                backgroundColor: [
-                    "#c64e44",
-                    "#f4a261",
-                    "#2a9d8f",
-                    "#457b9d",
-                    "#8d99ae"
-                ],
-                borderColor: "#fff",
-                borderWidth: 2
-
-
-            }]
-        },
-
-        options: {
-
-            // cutout: '70%',
-
-            responsive: true,
-            animation: {
-                animateRotate: true,
-                duration: 2000
-            },
-            plugins: {
-
-                legend: {
-                    display: false
-                }
+    if (chartWrapper) {
+        const chartObserver = new IntersectionObserver((entries, observer) => {
+            if (!entries.some((entry) => entry.isIntersecting)) {
+                return;
             }
-        }
-});
-}, { threshold: 0.25 });
 
-chartObserver.observe(chartWrapper);
+            observer.disconnect();
+
+            new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: [
+                        "Women Empowerment",
+                        "Education",
+                        "Agriculture",
+                        "Health",
+                        "SHGs"
+                    ],
+                    datasets: [{
+                        data: [35, 20, 18, 12, 15],
+                        backgroundColor: [
+                            "#c64e44",
+                            "#f4a261",
+                            "#2a9d8f",
+                            "#457b9d",
+                            "#8d99ae"
+                        ],
+                        borderColor: "#fff",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        animateRotate: true,
+                        duration: 2000
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }, { threshold: 0.25 });
+
+        chartObserver.observe(chartWrapper);
+    }
+}
 
 const galleryGrid = document.querySelector(".gallery-grid");
 const galleryLightbox = document.querySelector(".gallery-lightbox");
-const galleryLightboxImage = galleryLightbox.querySelector(".gallery-lightbox-image");
-const galleryLightboxClose = galleryLightbox.querySelector(".gallery-lightbox-close");
+if (galleryGrid && galleryLightbox) {
+    const galleryLightboxImage = galleryLightbox.querySelector(".gallery-lightbox-image");
+    const galleryLightboxClose = galleryLightbox.querySelector(".gallery-lightbox-close");
 
-function openGalleryImage(item) {
-    const image = item.querySelector("img");
+    if (galleryLightboxImage && galleryLightboxClose) {
+        function openGalleryImage(item) {
+            const image = item.querySelector("img");
 
-    galleryLightboxImage.src = image.currentSrc || image.src;
-    galleryLightboxImage.alt = image.alt;
-    galleryLightbox.showModal();
+            galleryLightboxImage.src = image.currentSrc || image.src;
+            galleryLightboxImage.alt = image.alt;
+            galleryLightbox.showModal();
+        }
+
+        galleryGrid.querySelectorAll(".gallery-item").forEach((item) => {
+            const image = item.querySelector("img");
+
+            item.setAttribute("role", "button");
+            item.setAttribute("tabindex", "0");
+            item.setAttribute("aria-label", `View image: ${image.alt}`);
+        });
+
+        galleryGrid.addEventListener("click", (event) => {
+            const item = event.target.closest(".gallery-item");
+
+            if (item) {
+                openGalleryImage(item);
+            }
+        });
+
+        galleryGrid.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            const item = event.target.closest(".gallery-item");
+
+            if (item) {
+                event.preventDefault();
+                openGalleryImage(item);
+            }
+        });
+
+        galleryLightboxClose.addEventListener("click", () => {
+            galleryLightbox.close();
+        });
+
+        galleryLightbox.addEventListener("click", (event) => {
+            if (event.target === galleryLightbox) {
+                galleryLightbox.close();
+            }
+        });
+    }
 }
 
-galleryGrid.querySelectorAll(".gallery-item").forEach((item) => {
-    const image = item.querySelector("img");
 
-    item.setAttribute("role", "button");
-    item.setAttribute("tabindex", "0");
-    item.setAttribute("aria-label", `View image: ${image.alt}`);
+// Gallery page code //
+
+/* =================================
+   GALLERY FILTER
+================================= */
+
+const filterButtons = document.querySelectorAll(".gallery-filter");
+
+const galleryCards = document.querySelectorAll(".gallery-card");
+
+filterButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        // Active button change
+        filterButtons.forEach((btn) => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const selectedCategory = button.dataset.filter;
+
+        // Filter images
+        galleryCards.forEach((card) => {
+
+            const cardCategory = card.dataset.category;
+
+            if (
+                selectedCategory === "all" ||
+                selectedCategory === cardCategory
+            ) {
+                card.classList.remove("hide");
+            } else {
+                card.classList.add("hide");
+            }
+
+        });
+
+    });
+
 });
 
-galleryGrid.addEventListener("click", (event) => {
-    const item = event.target.closest(".gallery-item");
-
-    if (item) {
-        openGalleryImage(item);
-    }
-});
-
-galleryGrid.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") {
-        return;
-    }
-
-    const item = event.target.closest(".gallery-item");
-
-    if (item) {
-        event.preventDefault();
-        openGalleryImage(item);
-    }
-});
-
-galleryLightboxClose.addEventListener("click", () => {
-    galleryLightbox.close();
-});
-
-galleryLightbox.addEventListener("click", (event) => {
-    if (event.target === galleryLightbox) {
-        galleryLightbox.close();
-    }
-});

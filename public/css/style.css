@@ -26,6 +26,17 @@ body {
 
     overflow-x: hidden;
 }
+:root {
+    --sanp-primary: #c64e44;
+    --sanp-primary-dark: #a93b33;
+    --sanp-white: #ffffff;
+    --sanp-dark: #202b29;
+    --sanp-text: #666666;
+    --sanp-light: #f8f8f8;
+    --sanp-border: #dddddd;
+    --sanp-shadow: 0 15px 35px rgba(32, 43, 41, .08);
+}
+
 
 button,
 input,
@@ -38,6 +49,7 @@ img {
     display: block;
     max-width: 100%;
 }
+
 
 
 /* =====================================
