@@ -1032,7 +1032,7 @@ body {
 .about-cta {
     background-image:
         linear-gradient(rgba(32, 43, 41, .62), rgba(32, 43, 41, .72)),
-        url("../images/handstogether.avif");
+        url("../images/hero2-banner.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1217,5 +1217,90 @@ body {
 
     .timeline-year {
         font-size: 16px;
+    }
+}
+
+/* Final responsive refinements */
+@media (max-width: 991px) {
+    .about-hero {
+        min-height: 420px;
+    }
+
+    .about-hero-content {
+        padding: 75px 0;
+    }
+
+    .about-intro-wrapper,
+    .story-main-wrapper,
+    .mission-vision-grid,
+    .approach-wrapper {
+        gap: 32px;
+    }
+
+    .about-intro-visual,
+    .story-main-visual {
+        width: 100%;
+        max-width: 700px;
+        margin-inline: auto;
+    }
+
+    .about-main-image {
+        height: 420px;
+    }
+
+    .approach-image img {
+        height: 430px;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-hero {
+        min-height: 380px;
+    }
+
+    .about-hero-content {
+        padding: 58px 0;
+    }
+
+    .about-hero h1 {
+        font-size: clamp(32px, 9vw, 42px);
+    }
+
+    .about-intro-section,
+    .our-story-section,
+    .mission-vision,
+    .core-values,
+    .our-approach {
+        padding: 52px 0;
+    }
+
+    .about-intro-visual {
+        min-height: 340px;
+    }
+
+    .about-main-image {
+        width: 100%;
+        height: 310px;
+    }
+
+    .about-overlay-image {
+        width: 52%;
+        height: 150px;
+    }
+
+    .purpose-content {
+        padding: 22px;
+    }
+
+    .about-cta-content {
+        padding: 40px 14px;
+    }
+
+    .about-whatsapp {
+        right: 16px;
+        bottom: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 23px;
     }
 }

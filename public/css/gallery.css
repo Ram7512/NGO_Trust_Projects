@@ -13,7 +13,7 @@ body {
     display: flex;
     align-items: center;
     background:
-        url("../images/galleryhero.jpg") center/cover no-repeat;
+        url("../images/hero1-banner.jpg") center/cover no-repeat;
 }
 
 .gallery-hero-overlay {
@@ -61,7 +61,7 @@ body {
 ================================= */
 
 .gallery-intro-section {
-    padding: 85px 0 55px;
+    padding: 60px 0 40px;
     background: #fff;
 }
 
@@ -236,7 +236,7 @@ body {
 .about-cta {
     background-image:
         linear-gradient(rgba(32, 43, 41, .62), rgba(32, 43, 41, .72)),
-        url("../images/handstogether.avif");
+        url("../images/hero2-banner.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -370,7 +370,7 @@ body {
     }
 
     .gallery-main-section {
-        padding: 25px 0 60px;
+        padding: 25px 0 40px;
     }
 
     .gallery-filters {
@@ -420,4 +420,35 @@ body {
         font-size: 28px;
     }
 
+}
+
+/* Final responsive refinements */
+@media (max-width: 991px) {
+    .gallery-hero {
+        min-height: 390px;
+    }
+
+    .gallery-grid {
+        grid-auto-rows: 220px;
+    }
+}
+
+@media (max-width: 575px) {
+    .gallery-hero {
+        min-height: 330px;
+    }
+
+    .gallery-hero-content h1 {
+        font-size: clamp(31px, 8vw, 38px);
+    }
+
+    .gallery-overlay {
+        padding: 18px;
+    }
+
+    .gallery-lightbox {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+        padding: 8px;
+    }
 }

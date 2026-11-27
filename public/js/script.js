@@ -21,13 +21,15 @@ if (welcomeDialog) {
     });
 }
 
-// Initialize AOS Animation
-AOS.init({
-    duration: 1500,
-    easing: "ease-in-out",
-    once: true,
-    offset: 100
-});
+if (typeof AOS !== "undefined") {
+    AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        offset: 80,
+        disable: () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    });
+}
 
 
 const stats = document.querySelectorAll(".floating-stat");

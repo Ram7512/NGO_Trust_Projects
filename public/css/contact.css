@@ -11,7 +11,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    background: url("../images/galleryhero.jpg") center/cover no-repeat;
+    background: url("../images/CommunitySupport.jpeg") center/cover no-repeat;
 }
 
 .contact-hero-overlay {
@@ -57,7 +57,7 @@ body {
 ================================= */
 
 .contact-intro-section {
-    padding: 75px 0 55px;
+    padding: 60px 0 40px;
     background: #fff;
 }
 
@@ -235,7 +235,7 @@ body {
 .contact-form-wrapper {
     background: #fff;
     padding: 40px;
-    border-radius: 6px;
+    border-radius: 18px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
 }
 
@@ -322,7 +322,7 @@ body {
 ================================= */
 
 .contact-map-section {
-    padding: 80px 0;
+    padding: 60px 0;
     background: #fff;
 }
 
@@ -333,7 +333,7 @@ body {
 
 .contact-map {
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
@@ -347,7 +347,7 @@ body {
 ================================= */
 
 .contact-cta-section {
-    padding: 80px 0;
+    padding: 60px 0;
     background: #f8f8f7;
 }
 
@@ -473,4 +473,52 @@ body {
         font-size: 28px;
     }
 
+}
+
+/* Final responsive refinements */
+@media (max-width: 991px) {
+    .contact-hero {
+        min-height: 370px;
+    }
+
+    .contact-hero-content h1 {
+        font-size: clamp(36px, 5vw, 46px);
+    }
+
+    .contact-main-wrapper {
+        gap: 28px;
+    }
+
+    .contact-form-wrapper {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .contact-hero {
+        min-height: 330px;
+    }
+
+    .contact-hero-content h1 {
+        font-size: clamp(30px, 8vw, 36px);
+        line-height: 1.2;
+    }
+
+    .contact-hero-content p,
+    .contact-intro-content p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .contact-social-links {
+        flex-wrap: wrap;
+    }
+
+    .contact-map iframe {
+        height: 280px;
+    }
+
+    .contact-cta-content {
+        padding-inline: 8px;
+    }
 }

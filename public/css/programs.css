@@ -495,7 +495,7 @@ body {
 ========================================= */
 
 .community-focus-section {
-    padding: 70px 0;
+    padding: 50px 0;
     background: #fff7f5;
 }
 
@@ -596,7 +596,7 @@ body {
 .about-cta {
     background-image:
         linear-gradient(rgba(32, 43, 41, .62), rgba(32, 43, 41, .72)),
-        url("../images/handstogether.avif");
+        url("../images/hero2-banner.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -864,4 +864,65 @@ body {
         font-size: 23px;
     }
 
+}
+
+/* Final responsive refinements */
+@media (max-width: 991px) {
+    .program-hero {
+        min-height: 390px;
+        padding: 75px 0;
+    }
+
+    .programs-grid,
+    .approach-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .program-activity-image {
+        height: 280px;
+    }
+
+    .community-focus-wrapper {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .program-activity-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .program-activity-row.reverse .program-activity-image,
+    .program-activity-row.reverse .program-activity-content {
+        order: initial;
+    }
+
+    .program-activity-image {
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
+}
+
+@media (max-width: 575px) {
+    .program-hero {
+        min-height: 350px;
+        padding: 60px 0;
+    }
+
+    .program-hero-content h1 {
+        font-size: clamp(32px, 8vw, 38px);
+    }
+
+    .programs-grid,
+    .approach-steps {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .program-detail-image {
+        height: 210px;
+    }
+
+    .about-cta-content {
+        padding: 40px 14px;
+    }
 }
