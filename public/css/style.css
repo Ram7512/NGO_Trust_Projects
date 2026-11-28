@@ -2110,6 +2110,11 @@ blockquote {
     margin-bottom: 12px;
 }
 
+.footer-column p i {
+    color: #e98278;
+    margin-right: 8px;
+}
+
 .footer-column ul {
 
     list-style: none;

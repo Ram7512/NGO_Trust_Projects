@@ -30,11 +30,21 @@ body {
     color: #fff;
 }
 
-.gallery-hero-content>span {
+.gallery-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 17px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 30px;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     color: #fff;
+}
+
+.gallery-hero-label i {
+    color: var(--sanp-primary);
 }
 
 .gallery-hero-content h1 {

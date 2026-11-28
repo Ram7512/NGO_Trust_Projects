@@ -35,6 +35,10 @@ body {
     letter-spacing: 1.5px;
 }
 
+.program-hero-label i {
+    color: var(--sanp-primary);
+}
+
 .program-hero-content h1 {
     font-size: clamp(38px, 5vw, 60px);
     font-weight: 800;
