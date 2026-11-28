@@ -2514,12 +2514,17 @@ blockquote {
         top: 10px;
         left: 10px;
         width: auto;
-        padding: 10px 14px;
+        padding: 7px 10px;
         border-radius: 12px;
     }
 
     .top-card h2 {
-        font-size: 20px;
+        font-size: 17px;
+    }
+
+    .top-card p {
+        font-size: 9px;
+        margin-top: 2px;
     }
 
     .growth-card,
@@ -3016,7 +3021,21 @@ blockquote {
     }
 
     .gallery-overlay h3 {
-        font-size: 17px;
+        font-size: 15px;
+    }
+
+    .gallery-overlay span {
+        font-size: 10px;
+    }
+
+    .gallery-overlay p {
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    .gallery-grid {
+        row-gap: 16px;
+        column-gap: 16px;
     }
 
     .contact-wrapper {
@@ -3148,11 +3167,19 @@ blockquote {
     width: 34px;
     height: 34px;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, .2);
+    border: 1px solid rgba(255, 255, 255, .75);
     border-radius: 50%;
-    background: rgba(255, 255, 255, .1);
-    color: #fff;
+    background: #c64e44;
+    color: #ffffff;
     cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+.gallery-lightbox-close i {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .gallery-lightbox-close:hover {

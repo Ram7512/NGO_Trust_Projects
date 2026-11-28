@@ -1278,6 +1278,57 @@ body {
         min-height: 340px;
     }
 
+    .story-main-visual {
+        padding: 0 0 24px;
+    }
+
+    .story-image-frame {
+        height: 340px;
+    }
+
+    .story-year-badge {
+        bottom: 18px;
+        left: 8px;
+        width: 112px;
+        padding: 8px 6px;
+    }
+
+    .story-year-badge span {
+        font-size: 9px;
+    }
+
+    .story-year-badge h3 {
+        font-size: 13px;
+    }
+
+    .story-year-badge p {
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    .story-image-caption {
+        right: 8px;
+        bottom: 18px;
+        width: calc(100% - 128px);
+        max-width: 160px;
+        gap: 7px;
+        padding: 9px 10px;
+    }
+
+    .story-image-caption i {
+        font-size: 16px;
+        flex: 0 0 auto;
+    }
+
+    .story-image-caption span {
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    .approach-image img {
+        height: 320px;
+    }
+
     .about-main-image {
         width: 100%;
         height: 310px;
