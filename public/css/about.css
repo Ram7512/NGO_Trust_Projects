@@ -12,7 +12,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    background: url("../images/groupimg.jpg") center/cover no-repeat;
+    background: url("../images/abouthero.jpeg") center/cover no-repeat;
 }
 
 .about-hero>.container {

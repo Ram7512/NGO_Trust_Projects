@@ -12,7 +12,7 @@ body {
     align-items: center;
     background:
         linear-gradient(90deg, rgba(32, 43, 41, 0.91), rgba(32, 43, 41, 0.65)),
-        url("../images/CommunitySupportHD.jpeg") center/cover no-repeat;
+        url("../images/programshero.jpeg") center/cover no-repeat;
     color: #ffffff;
     padding: 100px 0;
 }
