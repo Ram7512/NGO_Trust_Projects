@@ -905,6 +905,15 @@ img {
     border-radius: 35px;
 }
 
+@media (min-width: 992px) {
+    .women-banner img {
+        display: block;
+        height: auto;
+        object-fit: contain;
+        background-color: #f3f3f3;
+    }
+}
+
 .banner-badge {
 
     position: absolute;
@@ -1292,12 +1301,21 @@ img {
     position: relative;
 }
 
-.education-image img {
-
-    width: 100%;
+.education-image-frame {
     height: 600px;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 35px;
+    background: #f3f3f3;
+}
+
+.education-image-frame img {
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: inherit;
 }
 
 .floating-card {
@@ -1317,7 +1335,7 @@ img {
 }
 
 .card-one {
-    top: 40px;
+    top: 50px;
     right: -20px;
 }
 
@@ -2377,7 +2395,7 @@ blockquote {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
-    .education-image img {
+    .education-image-frame {
         height: 460px;
     }
 
@@ -2825,11 +2843,16 @@ blockquote {
         order: -1;
     }
 
-    .education-image img {
+    .education-image-frame {
         width: 100%;
         height: auto;
         aspect-ratio: 4 / 3;
         border-radius: 20px;
+    }
+
+    .education-image-frame img {
+        height: 100%;
+        border-radius: inherit;
     }
 
     .floating-card {
@@ -3132,64 +3155,38 @@ blockquote {
     }
 }
 
-.gallery-lightbox:not([open]) {
-    display: none;
+.mfp-bg {
+    background: rgba(8, 10, 12, .9);
+    opacity: 1;
 }
 
-.gallery-lightbox {
-    width: min(94vw, 1200px);
-    max-width: 94vw;
-    max-height: 92vh;
-    padding: 52px 16px 16px;
-    border: 0;
-    border-radius: 16px;
+.mfp-figure:after {
     background: #151719;
     box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
 }
 
-.gallery-lightbox::backdrop {
-    background: rgba(8, 10, 12, .88);
-    backdrop-filter: blur(4px);
+.mfp-title,
+.mfp-counter {
+    color: #ffffff;
 }
 
-.gallery-lightbox-image {
-    width: 100%;
-    max-height: calc(92vh - 68px);
-    object-fit: contain;
-    border-radius: 10px;
-}
-
-.gallery-lightbox-close {
-    position: absolute;
+.mfp-close-btn-in .mfp-close {
     top: 10px;
     right: 10px;
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
+    width: 40px;
+    height: 40px;
     border: 1px solid rgba(255, 255, 255, .75);
     border-radius: 50%;
     background: #c64e44;
     color: #ffffff;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+    font-size: 30px;
+    line-height: 38px;
+    opacity: 1;
+    text-align: center;
 }
 
-.gallery-lightbox-close i {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 800;
-    line-height: 1;
-}
-
-.gallery-lightbox-close:hover {
-    background: #c64e44;
-    border-color: #c64e44;
-}
-
-.gallery-lightbox-close:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
+.mfp-close-btn-in .mfp-close:hover {
+    background: #a93b33;
 }
 
 @media (max-width: 991px) {
@@ -3351,5 +3348,30 @@ blockquote {
 @media (max-width: 575px) {
     .footer-grid {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 1600px) {
+    .main-image img,
+    .community-image img,
+    .image-large,
+    .image-small,
+    .women-banner img,
+    .card-front img,
+    .story-image img,
+    .education-image-frame img,
+    .gallery-item img,
+    .achievement-image img {
+        object-fit: contain;
+        background-color: #f3f3f3;
+    }
+
+    .gallery-grid {
+        grid-auto-rows: clamp(280px, 18vw, 380px);
+        gap: clamp(24px, 1.5vw, 36px);
+    }
+
+    .gallery-item:hover img {
+        transform: none;
     }
 }

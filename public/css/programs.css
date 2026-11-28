@@ -930,3 +930,22 @@ body {
         padding: 40px 14px;
     }
 }
+
+@media (min-width: 1600px) {
+    .program-activity-image img,
+    .program-detail-image img {
+        object-fit: contain;
+        background-color: #f3f3f3;
+    }
+
+    .program-hero {
+        background-size: 100% 100%, contain;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    .program-activity-image:hover img,
+    .program-detail-card:hover .program-detail-image img {
+        transform: none;
+    }
+}

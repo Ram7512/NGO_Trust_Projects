@@ -532,3 +532,10 @@ body {
         padding-inline: 8px;
     }
 }
+
+@media (min-width: 1600px) {
+    .contact-hero {
+        background-color: #141e19;
+        background-size: contain;
+    }
+}

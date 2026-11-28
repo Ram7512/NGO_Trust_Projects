@@ -111,58 +111,71 @@ if (ctx) {
     }
 }
 
-const galleryGrid = document.querySelector(".gallery-grid");
-const galleryLightbox = document.querySelector(".gallery-lightbox");
-if (galleryGrid && galleryLightbox) {
-    const galleryLightboxImage = galleryLightbox.querySelector(".gallery-lightbox-image");
-    const galleryLightboxClose = galleryLightbox.querySelector(".gallery-lightbox-close");
+const galleryGrids = document.querySelectorAll(".gallery-grid");
+if (galleryGrids.length > 0) {
+    const $ = window.jQuery;
 
-    if (galleryLightboxImage && galleryLightboxClose) {
-        function openGalleryImage(item) {
-            const image = item.querySelector("img");
+    if (!$ || !$.magnificPopup) {
+        console.error("Magnific Popup could not be initialized because its dependencies did not load.");
+    } else {
+        galleryGrids.forEach((galleryGrid) => {
+            galleryGrid.querySelectorAll(".gallery-item").forEach((item) => {
+                const image = item.querySelector("img");
 
-            galleryLightboxImage.src = image.currentSrc || image.src;
-            galleryLightboxImage.alt = image.alt;
-            galleryLightbox.showModal();
-        }
+                if (!image) {
+                    console.error("A gallery item is missing its image.", item);
+                    return;
+                }
 
-        galleryGrid.querySelectorAll(".gallery-item").forEach((item) => {
-            const image = item.querySelector("img");
+                item.setAttribute("role", "button");
+                item.setAttribute("tabindex", "0");
+                item.setAttribute("aria-label", `View image: ${image.alt}`);
 
-            item.setAttribute("role", "button");
-            item.setAttribute("tabindex", "0");
-            item.setAttribute("aria-label", `View image: ${image.alt}`);
-        });
+                const openGallery = () => {
+                    const visibleItems = Array.from(
+                        galleryGrid.querySelectorAll(".gallery-item:not(.hide)")
+                    );
+                    const popupItems = visibleItems.map((galleryItem) => {
+                        const galleryImage = galleryItem.querySelector("img");
 
-        galleryGrid.addEventListener("click", (event) => {
-            const item = event.target.closest(".gallery-item");
+                        return {
+                            src: galleryImage.currentSrc || galleryImage.src,
+                            title: galleryImage.alt
+                        };
+                    });
+                    const currentIndex = visibleItems.indexOf(item);
 
-            if (item) {
-                openGalleryImage(item);
-            }
-        });
+                    if (currentIndex < 0) {
+                        return;
+                    }
 
-        galleryGrid.addEventListener("keydown", (event) => {
-            if (event.key !== "Enter" && event.key !== " ") {
-                return;
-            }
+                    $.magnificPopup.open({
+                        items: popupItems,
+                        type: "image",
+                        mainClass: "mfp-fade",
+                        removalDelay: 200,
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0, 1]
+                        },
+                        image: {
+                            titleSrc: "title",
+                            verticalFit: true
+                        }
+                    }, currentIndex);
+                };
 
-            const item = event.target.closest(".gallery-item");
+                item.addEventListener("click", openGallery);
+                item.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter" && event.key !== " ") {
+                        return;
+                    }
 
-            if (item) {
-                event.preventDefault();
-                openGalleryImage(item);
-            }
-        });
-
-        galleryLightboxClose.addEventListener("click", () => {
-            galleryLightbox.close();
-        });
-
-        galleryLightbox.addEventListener("click", (event) => {
-            if (event.target === galleryLightbox) {
-                galleryLightbox.close();
-            }
+                    event.preventDefault();
+                    openGallery();
+                });
+            });
         });
     }
 }

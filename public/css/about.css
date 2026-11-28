@@ -1355,3 +1355,19 @@ body {
         font-size: 23px;
     }
 }
+
+@media (min-width: 1600px) {
+    .about-hero {
+        background-color: #202b29;
+        background-size: contain;
+    }
+
+    .about-main-image img,
+    .about-overlay-image img,
+    .story-image-frame img,
+    .purpose-image img,
+    .approach-image img {
+        object-fit: contain;
+        background-color: #f3f3f3;
+    }
+}
